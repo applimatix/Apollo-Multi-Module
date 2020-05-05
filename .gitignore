@@ -1,0 +1,32 @@
+.gradle
+build
+out
+/local.properties
+/captures
+/projectFilesBackup*
+
+# User-specific configurations
+.idea/assetWizardSettings.xml
+.idea/caches/
+.idea/dictionaries/
+.idea/encodings.xml
+.idea/gradle.xml
+.idea/inspectionProfiles/
+.idea/kotlinc.xml
+.idea/libraries/
+.idea/misc.xml
+.idea/modules.xml
+.idea/runConfigurations.xml
+.idea/statistic.xml
+.idea/vcs.xml
+.idea/workspace.xml
+/.idea/kotlinScripting.xml
+*.iml
+app/app.iml
+*~
+
+# OS-specific files
+.DS_Store
+app/src/main/assets/crashlytics-build.properties
+app/src/main/res/values/com_crashlytics_export_strings.xml
+.externalNativeBuild

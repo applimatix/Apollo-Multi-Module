@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Apollo Multi Module</string>
+    <string name="activity_company_list_label">Companies</string>
+    <string name="activity_employee_list_label">Employees</string>
+    <string name="activity_employee_label">Employee</string>
+    <string name="employee_name_label">%1$s %2$s</string>
+</resources>

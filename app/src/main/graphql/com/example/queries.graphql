@@ -1,0 +1,37 @@
+query AllCompanies {
+    allCompanies {
+        id,
+        name,
+        industry
+    }
+}
+
+query CompanyEmployees($id: ID!) {
+    company(id: $id) {
+        name,
+        employees {
+            id,
+            firstName,
+            lastName
+        }
+    }
+}
+
+query Employee($id: ID!) {
+    employee(id: $id) {
+        id,
+        firstName,
+        lastName,
+        address,
+        subordinates {
+            id,
+            firstName,
+            lastName
+        },
+        company {
+            id,
+            name,
+            industry
+        }
+    }
+}
