@@ -7,13 +7,13 @@ data class Company(val id: String, val name: String, val industry: String, val e
 
     companion object {
         fun fromService(allCompany: AllCompaniesQuery.AllCompany): Company? =
-            if (allCompany.id != null && allCompany.name != null && allCompany.industry != null)
-                Company(allCompany.id, allCompany.name, allCompany.industry)
+            if (allCompany.fragments.subCompany.id != null && allCompany.fragments.subCompany.name != null && allCompany.fragments.subCompany.industry != null)
+                Company(allCompany.fragments.subCompany.id, allCompany.fragments.subCompany.name, allCompany.fragments.subCompany.industry)
             else null
 
         fun fromService(empCompany: EmployeeQuery.Company?): Company? = empCompany?.let {
-            if (empCompany.id != null && empCompany.name != null && empCompany.industry != null)
-                Company(empCompany.id, empCompany.name, empCompany.industry)
+            if (empCompany.fragments.subCompany.id != null && empCompany.fragments.subCompany.name != null && empCompany.fragments.subCompany.industry != null)
+                Company(empCompany.fragments.subCompany.id, empCompany.fragments.subCompany.name, empCompany.fragments.subCompany.industry)
             else null
         }
     }

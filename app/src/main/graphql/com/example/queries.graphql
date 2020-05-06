@@ -1,8 +1,18 @@
+fragment subEmployee on Employee {
+    id,
+    firstName,
+    lastName
+}
+
+fragment subCompany on Company {
+    id,
+    name,
+    industry
+}
+
 query AllCompanies {
     allCompanies {
-        id,
-        name,
-        industry
+        ... subCompany
     }
 }
 
@@ -10,28 +20,20 @@ query CompanyEmployees($id: ID!) {
     company(id: $id) {
         name,
         employees {
-            id,
-            firstName,
-            lastName
+            ... subEmployee
         }
     }
 }
 
 query Employee($id: ID!) {
     employee(id: $id) {
-        id,
-        firstName,
-        lastName,
+        ... subEmployee,
         address,
         subordinates {
-            id,
-            firstName,
-            lastName
+            ... subEmployee
         },
         company {
-            id,
-            name,
-            industry
+            ... subCompany
         }
     }
 }
