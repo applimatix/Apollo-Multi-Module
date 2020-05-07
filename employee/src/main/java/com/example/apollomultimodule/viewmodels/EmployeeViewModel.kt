@@ -10,13 +10,14 @@ import com.example.apollomultimodule.base.data.models.Employee
 import com.example.apollomultimodule.base.util.MutableSingleLiveEvent
 import com.example.apollomultimodule.base.util.SingleLiveEvent
 import com.example.apollomultimodule.base.viewmodels.epoxy.EmployeeListController
-import com.example.apollomultimodule.base.viewmodels.epoxy.EmployeeSelectedHandler
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class EmployeeListViewModel(application: Application) : AndroidViewModel(application),
-    EmployeeSelectedHandler {
+class EmployeeViewModel(application: Application) : AndroidViewModel(application) {
+
+    private val _employee: MutableLiveData<Employee> = MutableLiveData()
+    val employee: LiveData<Employee> = _employee
 
     private val _employeeListController: MutableLiveData<EmployeeListController> = MutableLiveData()
     val employeeListController: LiveData<EmployeeListController> = _employeeListController
@@ -24,31 +25,32 @@ class EmployeeListViewModel(application: Application) : AndroidViewModel(applica
     private val _actions: MutableSingleLiveEvent<Actions> = MutableSingleLiveEvent()
     val actions: SingleLiveEvent<Actions> = _actions
 
-    fun fetchEmployees(companyId: String) {
+    fun fetchEmployee(employeeId: String) {
 
         viewModelScope.launch {
             try {
                 val response = withContext(Dispatchers.IO) {
-                    getApplication<ApolloApplication>().companiesService.fetchCompanyEmployees(companyId)
+                    getApplication<ApolloApplication>().companiesService.fetchEmployee(employeeId)
                 }
 
-                _employeeListController.value =
-                    EmployeeListController(
-                        response.data?.company?.employees?.mapNotNull {
-                            Employee.fromService(it)
-                        } ?: listOf(), this@EmployeeListViewModel)
+                response.data?.employee?.let {
+                    _employee.value = Employee.fromService(it)
+                    _employeeListController.value =
+                        EmployeeListController(
+                            it.subordinates?.mapNotNull {
+                                Employee.fromService(it)
+                            } ?: listOf())
+                }
             } catch (e: Exception) {
-                _actions.value = Actions.ShowError(e)
+                _actions.value =
+                    Actions.ShowError(
+                        e
+                    )
             }
         }
     }
 
-    override fun employeeSelected(employee: Employee) {
-        _actions.value = Actions.ShowEmployee(employee)
-    }
-
     sealed class Actions {
-        data class ShowEmployee(val employee: Employee) : Actions()
         data class ShowError(val exception: Exception) : Actions()
     }
 }

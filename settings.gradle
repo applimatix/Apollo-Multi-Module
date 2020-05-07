@@ -1,2 +1,4 @@
 rootProject.name='Apollo Multi Module'
 include ':app'
+include ':employee'
+include ':base'

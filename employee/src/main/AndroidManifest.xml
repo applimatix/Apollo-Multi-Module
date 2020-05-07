@@ -1,0 +1,9 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.apollomultimodule.employee" >
+
+    <application>
+        <activity
+            android:name="com.example.apollomultimodule.employee.views.EmployeeActivity"
+            android:label="@string/activity_employee_label" />
+    </application>
+</manifest>

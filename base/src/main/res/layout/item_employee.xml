@@ -5,25 +5,27 @@
 
     <data>
         <variable
-            name="company"
-            type="com.example.apollomultimodule.base.data.models.Company" />
+            name="employee"
+            type="com.example.apollomultimodule.base.data.models.Employee" />
 
         <variable
             name="clickListener"
             type="android.view.View.OnClickListener" />
+
+        <import type="androidx.databinding.adapters.Converters" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="@{clickListener::onClick}">
+        android:onClick="@{clickListener != null ? clickListener::onClick : null}">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_margin="16dp"
-            android:text="@{company.name}"
+            android:text="@{@string/employee_name_label(employee.firstName, employee.lastName)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

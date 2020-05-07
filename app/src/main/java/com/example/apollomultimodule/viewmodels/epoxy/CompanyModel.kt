@@ -5,7 +5,7 @@ import com.airbnb.epoxy.DataBindingEpoxyModel
 import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.example.apollomultimodule.R
-import com.example.apollomultimodule.data.models.Company
+import com.example.apollomultimodule.base.data.models.Company
 
 @EpoxyModelClass(layout = R.layout.item_company)
 abstract class CompanyModel : DataBindingEpoxyModel() {
