@@ -1,0 +1,15 @@
+{
+  "name": "Local GraphQL Schema",
+  "schemaPath": "./apollo/schema.json",
+  "extensions": {
+    "endpoints": {
+      "Default GraphQL Endpoint": {
+        "url": "http://localhost:9002/graphql",
+        "headers": {
+          "user-agent": "JS GraphQL"
+        },
+        "introspect": true
+      }
+    }
+  }
+}

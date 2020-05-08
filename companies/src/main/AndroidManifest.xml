@@ -1,0 +1,18 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.apollomultimodule.companies" >
+
+    <application>
+        <activity
+            android:name="com.example.apollomultimodule.companies.views.CompanyListActivity"
+            android:label="@string/activity_company_list_label">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name="com.example.apollomultimodule.companies.views.EmployeeListActivity"
+            android:label="@string/activity_employee_list_label" />
+    </application>
+</manifest>

@@ -2,19 +2,19 @@ package com.example.apollomultimodule.employee.views
 
 import android.os.Bundle
 import android.widget.Toast
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.apollomultimodule.employee.databinding.ActivityEmployeeBinding
-import com.example.apollomultimodule.viewmodels.EmployeeViewModel
+import com.example.apollomultimodule.employee.viewmodels.EmployeeViewModel
 import kotlinx.android.synthetic.main.activity_employee.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class EmployeeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityEmployeeBinding
 
-    private val viewModel: EmployeeViewModel by viewModels()
+    private val viewModel: EmployeeViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

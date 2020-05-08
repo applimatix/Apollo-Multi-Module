@@ -1,0 +1,13 @@
+
+query Employee($id: ID!) {
+    employee(id: $id) {
+        ... subEmployee,
+        address,
+        subordinates {
+            ... subEmployee
+        },
+        company {
+            ... subCompany
+        }
+    }
+}

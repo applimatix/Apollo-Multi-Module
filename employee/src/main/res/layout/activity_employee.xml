@@ -7,13 +7,13 @@
     <data>
         <variable
             name="viewmodel"
-            type="com.example.apollomultimodule.viewmodels.EmployeeViewModel" />
+            type="com.example.apollomultimodule.employee.viewmodels.EmployeeViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".views.EmployeeActivity">
+        tools:context="com.example.apollomultimodule.employee.views.EmployeeActivity">
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/appBar"

@@ -1,0 +1,11 @@
+fragment subEmployee on Employee {
+    id,
+    firstName,
+    lastName
+}
+
+fragment subCompany on Company {
+    id,
+    name,
+    industry
+}
