@@ -1,16 +1,16 @@
 package com.example.apollomultimodule.companies.views
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.apollomultimodule.base.navigation.Navigation
 import com.example.apollomultimodule.companies.databinding.ActivityEmployeeListBinding
 import com.example.apollomultimodule.companies.viewmodels.EmployeeListViewModel
-import com.example.apollomultimodule.employee.views.EmployeeActivity
 import kotlinx.android.synthetic.main.activity_employee_list.recyclerView
 import kotlinx.android.synthetic.main.activity_employee_list.toolbar
+import org.koin.android.ext.android.inject
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class EmployeeListActivity : AppCompatActivity() {
@@ -18,6 +18,8 @@ class EmployeeListActivity : AppCompatActivity() {
     private lateinit var binding: ActivityEmployeeListBinding
 
     private val viewModel: EmployeeListViewModel by viewModel()
+
+    private val navigation: Navigation by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,8 +48,8 @@ class EmployeeListActivity : AppCompatActivity() {
             actions.observe(this@EmployeeListActivity, Observer {
                 when(it) {
                     is EmployeeListViewModel.Actions.ShowEmployee -> {
-                        val intent = Intent(this@EmployeeListActivity, EmployeeActivity::class.java)
-                        intent.putExtra(EmployeeActivity.EXTRA_EMPLOYEE_ID, it.employee.id)
+                        val intent = navigation.intentTo(Navigation.Destination.Employee)
+                        intent.putExtra(Navigation.Destination.Employee.EXTRA_EMPLOYEE_ID, it.employee.id)
                         startActivity(intent)
                     }
                     is EmployeeListViewModel.Actions.ShowError -> {
@@ -56,13 +58,9 @@ class EmployeeListActivity : AppCompatActivity() {
                 }
             })
 
-            intent.getStringExtra(EXTRA_COMPANY_ID)?.let {
+            intent.getStringExtra(Navigation.Destination.EmployeeList.EXTRA_COMPANY_ID)?.let {
                 fetchEmployees(it)
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_COMPANY_ID = "extra_company_id"
     }
 }

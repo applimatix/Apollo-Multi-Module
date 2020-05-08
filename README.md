@@ -2,6 +2,13 @@
 
 This app explores the efficiencies that can be gained using multiple modules with Apollo in it's current state.
 
+Specifically can fragments be shared across modules.
+
+## Outcomes
+
+Although somewhat expected from searching the internet regarding this issue, it is not possible yet to
+get 2 self contained and non-dependant modules
+
 ## To run the app
 
 1. Import the project into Android Studio

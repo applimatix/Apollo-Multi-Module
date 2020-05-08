@@ -5,6 +5,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.DividerItemDecoration
+import com.example.apollomultimodule.base.navigation.Navigation
 import com.example.apollomultimodule.employee.databinding.ActivityEmployeeBinding
 import com.example.apollomultimodule.employee.viewmodels.EmployeeViewModel
 import kotlinx.android.synthetic.main.activity_employee.*
@@ -55,13 +56,9 @@ class EmployeeActivity : AppCompatActivity() {
                 }
             })
 
-            intent.getStringExtra(EXTRA_EMPLOYEE_ID)?.let {
+            intent.getStringExtra(Navigation.Destination.Employee.EXTRA_EMPLOYEE_ID)?.let {
                 fetchEmployee(it)
             }
         }
-    }
-
-    companion object {
-        const val EXTRA_EMPLOYEE_ID = "extra_employee_id"
     }
 }
