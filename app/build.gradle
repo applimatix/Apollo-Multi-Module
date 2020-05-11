@@ -40,6 +40,7 @@ android {
 
 dependencies {
     implementation(project(':base'))
+    implementation(project(':apollo'))
     implementation(project(':employee'))
     implementation(project(':companies'))
 

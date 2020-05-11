@@ -4,11 +4,11 @@ import com.example.apollomultimodule.apollo.EmployeeQuery
 import com.example.apollomultimodule.base.data.models.Company
 
 fun Company.Companion.fromService(empCompany: EmployeeQuery.Company?): Company? = empCompany?.let {
-    if (empCompany.fragments.subCompany.id != null && empCompany.fragments.subCompany.name != null && empCompany.fragments.subCompany.industry != null)
+    if (it.fragments.subCompany.id != null && it.fragments.subCompany.name != null && it.fragments.subCompany.industry != null)
         Company(
-            empCompany.fragments.subCompany.id,
-            empCompany.fragments.subCompany.name,
-            empCompany.fragments.subCompany.industry
+            it.fragments.subCompany.id!!,
+            it.fragments.subCompany.name!!,
+            it.fragments.subCompany.industry!!
         )
     else null
 }

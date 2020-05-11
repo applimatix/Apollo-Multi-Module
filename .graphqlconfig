@@ -1,6 +1,6 @@
 {
   "name": "Local GraphQL Schema",
-  "schemaPath": "./apollo/schema.json",
+  "schemaPath": "./apollo/graphql/schema.json",
   "extensions": {
     "endpoints": {
       "Default GraphQL Endpoint": {
