@@ -6,8 +6,11 @@ Specifically can fragments be shared across modules.
 
 ## Outcomes
 
-Although somewhat expected from searching the internet regarding this issue, it is not possible yet to
-get 2 self contained and non-dependant modules
+Although not a perfect solution, it is possible to structure modules so that their graphql queries 
+can be defined in the module and picked up and compiled into a central apollo module. This allows 
+the models created by the queries to be centrally located and available for use by any module that 
+lists the apollo module as a dependency. The fragments used by the modules can also be shared by 
+being stored in the central apollo module  
 
 ## To run the app
 
